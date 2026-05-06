@@ -15,11 +15,15 @@ const Home = () => {
         </div>
         
         <div className="relative z-10 text-center text-white px-6 max-w-4xl">
-          <span className="uppercase tracking-[0.3em] text-sm font-medium mb-4 block animate-fade-in">Luxury Hotel & Resort</span>
-          <h1 className="text-6xl md:text-8xl font-serif mb-8 leading-tight">Escape to Your Own Paradise</h1>
-          <p className="text-xl opacity-90 mb-10 max-w-2xl mx-auto font-light">
+          <span className="uppercase tracking-[0.3em] text-[10px] md:text-sm font-medium mb-4 block animate-fade-in">Luxury Hotel & Resort</span>
+          <h1 className="text-4xl md:text-7xl lg:text-8xl font-serif mb-6 md:mb-8 leading-tight">Escape to Your Own Paradise</h1>
+          <p className="text-base md:text-xl opacity-90 mb-8 md:mb-10 max-w-2xl mx-auto font-light px-4 md:px-0">
             Experience the epitome of luxury and comfort in the heart of the world's most beautiful destinations.
           </p>
+          
+          <Link to="/reserve" className="md:hidden inline-block bg-primary-gold text-primary-dark px-10 py-4 rounded-xl font-bold transition shadow-lg mb-10">
+            Book Now
+          </Link>
           
           {/* Floating Booking Bar */}
           <div className="bg-white/10 backdrop-blur-md p-2 rounded-2xl border border-white/20 shadow-2xl max-w-5xl mx-auto hidden md:flex items-center gap-2">
@@ -96,19 +100,19 @@ const Home = () => {
       </section>
 
       {/* Facilities/About */}
-      <section className="bg-primary-dark text-white py-24">
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-          <div className="relative">
+      <section className="bg-primary-dark text-white py-16 md:py-24">
+        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+          <div className="relative order-2 lg:order-1">
             <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
               <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1780" alt="Spa" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute -bottom-10 -right-10 w-64 h-64 border-8 border-primary-gold rounded-2xl hidden md:block -z-10 animate-pulse"></div>
+            <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 w-32 h-32 md:w-64 md:h-64 border-4 md:border-8 border-primary-gold rounded-2xl hidden md:block -z-10 animate-pulse"></div>
           </div>
           
-          <div className="space-y-8">
-            <span className="text-primary-gold uppercase tracking-widest text-xs font-bold block">Relax & Unwind</span>
-            <h2 className="text-5xl font-serif leading-tight">Discover a World of Premium Facilities</h2>
-            <p className="text-lg text-gray-400 font-light leading-relaxed">
+          <div className="space-y-6 md:space-y-8 order-1 lg:order-2">
+            <span className="text-primary-gold uppercase tracking-widest text-[10px] md:text-xs font-bold block">Relax & Unwind</span>
+            <h2 className="text-3xl md:text-5xl font-serif leading-tight">Discover a World of Premium Facilities</h2>
+            <p className="text-base md:text-lg text-gray-400 font-light leading-relaxed">
               From our infinity pool overlooking the ocean to our world-class spa and Michelin-starred restaurants, every detail is designed for your ultimate satisfaction.
             </p>
             <ul className="grid grid-cols-2 gap-6 pt-4">

@@ -45,43 +45,43 @@ const Rooms = () => {
 
   return (
     <div className="container mx-auto px-6 py-20">
-      <div className="text-center mb-16">
-        <span className="text-primary-gold uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Our Collection</span>
-        <h1 className="text-5xl font-serif text-primary-dark">Find Your Perfect Stay</h1>
+      <div className="text-center mb-10 md:mb-16">
+        <span className="text-primary-gold uppercase tracking-[0.3em] text-[10px] md:text-xs font-bold mb-4 block">Our Collection</span>
+        <h1 className="text-4xl md:text-5xl font-serif text-primary-dark px-4">Find Your Perfect Stay</h1>
       </div>
 
-      <div className="grid grid-cols-1 gap-16">
+      <div className="grid grid-cols-1 gap-10 md:gap-16">
         {roomTypes.map((room) => (
-          <div key={room._id} className="flex flex-col lg:flex-row bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100 group">
+          <div key={room._id} className="flex flex-col lg:flex-row bg-white rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100 group">
             {/* Image Section */}
-            <div className="lg:w-1/2 relative h-[400px] lg:h-auto overflow-hidden">
+            <div className="lg:w-1/2 relative h-[300px] md:h-[400px] lg:h-auto overflow-hidden">
               <img 
                 src={room.images[0] || 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=2070'} 
                 alt={room.typeName} 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute top-8 left-8 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white border border-white/30 flex items-center gap-2">
+              <div className="absolute top-6 left-6 md:top-8 md:left-8 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white border border-white/30 flex items-center gap-2">
                 <Star size={16} className="fill-primary-gold text-primary-gold" />
-                <span className="font-bold">4.9 / 5.0</span>
+                <span className="font-bold text-sm">4.9 / 5.0</span>
               </div>
             </div>
 
             {/* Content Section */}
-            <div className="lg:w-1/2 p-12 flex flex-col justify-between">
+            <div className="lg:w-1/2 p-8 md:p-12 flex flex-col justify-between">
               <div>
-                <div className="flex justify-between items-start mb-6">
-                  <h2 className="text-4xl font-serif text-primary-dark">{room.typeName}</h2>
-                  <div className="text-right">
-                    <p className="text-primary-gold text-3xl font-bold">Rp {room.price.toLocaleString()}</p>
-                    <p className="text-gray-400 text-xs uppercase tracking-widest font-bold">per night</p>
+                <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">
+                  <h2 className="text-3xl md:text-4xl font-serif text-primary-dark">{room.typeName}</h2>
+                  <div className="md:text-right">
+                    <p className="text-primary-gold text-2xl md:text-3xl font-bold">Rp {room.price.toLocaleString()}</p>
+                    <p className="text-gray-400 text-[10px] uppercase tracking-widest font-bold">per night</p>
                   </div>
                 </div>
                 
-                <p className="text-gray-500 leading-relaxed mb-8 font-light text-lg">
+                <p className="text-gray-500 leading-relaxed mb-6 md:mb-8 font-light text-base md:text-lg">
                   {room.description}
                 </p>
 
-                <div className="grid grid-cols-2 gap-y-4 mb-10">
+                <div className="grid grid-cols-2 gap-y-4 mb-8 md:mb-10">
                   <Facility icon={<Wifi size={18} />} label="High Speed WiFi" />
                   <Facility icon={<Coffee size={18} />} label="Coffee Maker" />
                   <Facility icon={<Tv size={18} />} label="Smart TV" />
@@ -89,15 +89,15 @@ const Rooms = () => {
                 </div>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link 
                   to="/reserve" 
                   state={{ roomTypeId: room._id, roomTypeName: room.typeName }}
-                  className="flex-grow bg-primary-dark text-white text-center py-4 rounded-2xl font-bold hover:bg-primary-gold transition-all shadow-lg"
+                  className="flex-grow bg-primary-dark text-white text-center py-4 rounded-xl md:rounded-2xl font-bold hover:bg-primary-gold transition-all shadow-lg"
                 >
                   Book This Room
                 </Link>
-                <button className="px-6 border-2 border-primary-dark text-primary-dark rounded-2xl font-bold hover:bg-primary-dark hover:text-white transition-all">
+                <button className="py-4 px-8 border-2 border-primary-dark text-primary-dark rounded-xl md:rounded-2xl font-bold hover:bg-primary-dark hover:text-white transition-all">
                   Details
                 </button>
               </div>

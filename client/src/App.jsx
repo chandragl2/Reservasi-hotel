@@ -8,9 +8,11 @@ import Home from './pages/Home';
 import Rooms from './pages/Rooms';
 import UserReservations from './pages/UserReservations';
 import ProtectedRoute from './components/ProtectedRoute';
+import { Menu, X } from 'lucide-react';
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('userInfo'));
@@ -28,11 +30,13 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen flex flex-col w-full">
-        <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 py-5 px-10 flex justify-between items-center border-b border-gray-100">
-          <Link to="/" className="text-3xl font-serif font-bold text-primary-dark tracking-tighter">
+        <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 py-5 px-6 md:px-10 flex justify-between items-center border-b border-gray-100">
+          <Link to="/" className="text-2xl md:text-3xl font-serif font-bold text-primary-dark tracking-tighter">
             HOTEL<span className="text-primary-gold">RESERVE</span>
           </Link>
-          <div className="space-x-10 flex items-center">
+          
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex space-x-10 items-center">
             <Link to="/" className="text-primary-dark hover:text-primary-gold font-semibold tracking-wide transition">Home</Link>
             <Link to="/rooms" className="text-primary-dark hover:text-primary-gold font-semibold tracking-wide transition">Rooms</Link>
             <Link to="/about" className="text-primary-dark hover:text-primary-gold font-semibold tracking-wide transition">About</Link>
@@ -57,6 +61,40 @@ function App() {
               <Link to="/login" className="bg-primary-dark text-white px-8 py-3 rounded-full hover:bg-primary-gold transition font-bold text-sm tracking-widest uppercase">Login</Link>
             )}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="lg:hidden text-primary-dark p-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+
+          {/* Mobile Menu Overlay */}
+          {isMenuOpen && (
+            <div className="fixed inset-0 top-[72px] bg-white z-40 lg:hidden flex flex-col p-8 space-y-6 animate-fade-in">
+              <Link to="/" onClick={() => setIsMenuOpen(false)} className="text-2xl font-serif font-bold text-primary-dark border-b pb-4">Home</Link>
+              <Link to="/rooms" onClick={() => setIsMenuOpen(false)} className="text-2xl font-serif font-bold text-primary-dark border-b pb-4">Rooms</Link>
+              <Link to="/about" onClick={() => setIsMenuOpen(false)} className="text-2xl font-serif font-bold text-primary-dark border-b pb-4">About</Link>
+              {userInfo ? (
+                <>
+                  <Link to="/my-bookings" onClick={() => setIsMenuOpen(false)} className="text-2xl font-serif font-bold text-primary-dark border-b pb-4">My Bookings</Link>
+                  <div className="pt-4">
+                    <p className="text-sm text-gray-400 uppercase tracking-widest mb-1">{userInfo.role}</p>
+                    <p className="text-xl font-bold mb-6">{userInfo.name}</p>
+                    <button 
+                      onClick={logoutHandler}
+                      className="w-full bg-primary-dark text-white py-4 rounded-xl font-bold"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="w-full bg-primary-dark text-white py-4 rounded-xl font-bold text-center">Login</Link>
+              )}
+            </div>
+          )}
         </nav>
 
         <main className="flex-grow">
