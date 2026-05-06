@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-gold: #C5A059;
+  --color-primary-dark: #1A1A1A;
+  --color-accent-cream: #F9F7F2;
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  background-color: var(--color-accent-cream);
+  color: var(--color-primary-dark);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, .font-serif {
+  font-family: var(--font-serif);
+}
